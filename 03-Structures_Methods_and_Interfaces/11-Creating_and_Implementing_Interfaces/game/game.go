@@ -58,52 +58,10 @@ func main() {
 	p1.Move(100, 200)
 	fmt.Printf("p1 (move): %+v\n", p1)
 
-	fmt.Println(p1.Found(Copper)) // <nil>
-	fmt.Println(p1.Found(Copper)) // <nil>
-	fmt.Println(p1.Found(Key(7))) // unknown key: 7
-	fmt.Println("keys:", p1.Keys) // keys: [copper]
-
-	ms := []Mover{
-		&i, &p1,
-	}
-
-	moveAll(ms, 50, 70)
-	for _, m := range ms {
-		fmt.Println(m)
-	}
-}
-
-/*
-Thought exercise: Sorting
-
-func Sort(s Sortable) {
-	// ...
-}
-
-type Sortable interface {
-	Less(i, j int) bool
-	Swap(i, j int)
-	Len() int
-}
-*/
-
-/*
-Interfaces
-- Set of methods (and types)
-- We define interfaces as "what you need", not "what you provide"
-  - Interfaces are small (stdlib average ~2 methods/interface)
-  - If you have interface with more than 4 methods, think again
-
-- Start with concrete types, discover interfaces
-*/
-type Mover interface {
-	Move(int, int)
-}
-
-func moveAll(ms []Mover, dx, dy int) {
-	for _, m := range ms {
-		m.Move(dx, dy)
-	}
+	fmt.Println(p1.Found("copper")) // <nil>
+	fmt.Println(p1.Found("copper")) // <nil>
+	fmt.Println(p1.Found("gold"))   // unknown key: "gold"
+	fmt.Println("keys:", p1.Keys)   // keys: [copper]
 }
 
 /*
@@ -114,34 +72,9 @@ Exercise:
 	- It should add a key only once
 */
 
-// go install golang.org/x/tools/cmd/stringer@latest
-// In ~/.bashrc
-// export PATH="$(go env GOPATH)"
-
-// String implements the fmt.Stringer interface
-func (k Key) String() string {
-	switch k {
-	case Copper:
-		return "copper"
-	case Jade:
-		return "jade"
-	case Crystal:
-		return "crystal"
-	}
-	return fmt.Sprintf("<Key %d>", k)
-}
-
-type Key byte
-
-const (
-	Copper Key = iota + 1
-	Jade
-	Crystal
-)
-
-func (p *Player) Found(key Key) error {
+func (p *Player) Found(key string) error {
 	switch key {
-	case Copper, Crystal, Jade:
+	case "copper", "crystal", "jade":
 		// Ok
 	default:
 		return fmt.Errorf("unknown key: %q\n", key)
@@ -155,7 +88,7 @@ func (p *Player) Found(key Key) error {
 type Player struct {
 	Name string
 	Item // Player embeds Item
-	Keys []Key
+	Keys []string
 }
 
 // Move will change the value of i by delta x and delta y
