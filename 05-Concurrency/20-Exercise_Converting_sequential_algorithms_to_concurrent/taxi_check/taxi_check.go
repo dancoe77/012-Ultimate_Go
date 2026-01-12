@@ -69,7 +69,7 @@ func parseSigFile(r io.Reader) (map[string]string, error) {
 }
 
 func main() {
-	rootDir := "/home/dan/Code/012-Ultimate_Go/05-Concurrency/20-Exercise_Converting_sequential_algorithms_to_concurrent/taxi_check/taxi_concurrent" // Change to where unzipped taxi_concurrent-sha256.zip
+	rootDir := "/home/dan/Code/012-Practical_Go_Foundations/05-Concurrency/20-Exercise_Converting_sequential_algorithms_to_concurrent/taxi_check/taxi_concurrent" // Change to where unzipped taxi_concurrent-sha256.zip
 	file, err := os.Open(path.Join(rootDir, "sha256sum.txt"))
 	if err != nil {
 		log.Fatalf("error: %s", err)

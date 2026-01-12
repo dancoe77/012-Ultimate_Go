@@ -22,7 +22,7 @@ var wordRE = regexp.MustCompile(`[a-zA-Z]+`)
 
 func main() {
 	// mapDemo()
-	file, err := os.Open("/home/dan/Code/012-Ultimate_Go/04-Panics_and_Maps/15-Calculating_Word_Frequency_and_working_with_Maps/freq/sherlock.txt")
+	file, err := os.Open("/home/dan/Code/012-Practical_Go_Foundations/04-Panics_and_Maps/15-Calculating_Word_Frequency_and_working_with_Maps/freq/sherlock.txt")
 	if err != nil {
 		fmt.Println("ERROR:", err)
 		return
