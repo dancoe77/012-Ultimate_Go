@@ -1,0 +1,18 @@
+module github.com/dancoe77/nlp
+
+go 1.25.5
+
+// Risks of using 3rd party packages
+// - Security (ignorance, intentional)
+// - Bugs
+// - Compatibility (API Changes); Semantic Versioning
+// - Legal (license)
+// - Package and dependencies might be missing; go mod vendor
+
+require github.com/stretchr/testify v1.11.1
+
+require (
+	github.com/davecgh/go-spew v1.1.1 // indirect
+	github.com/pmezard/go-difflib v1.0.0 // indirect
+	gopkg.in/yaml.v3 v3.0.1 // indirect
+)
