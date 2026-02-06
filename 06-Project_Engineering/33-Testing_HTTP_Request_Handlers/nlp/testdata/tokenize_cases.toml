@@ -1,0 +1,20 @@
+[[case]]
+text = "Who's on first?"
+tokens = [
+    "who",
+    "on",
+    "first",
+]
+
+[[case]]
+text = "What's on second?"
+tokens = [
+    "what",
+    "on",
+    "second",
+]
+
+[[case]]
+text = ""
+name = "empty string"
+tokens = []
